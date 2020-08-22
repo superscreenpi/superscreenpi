@@ -1,6 +1,9 @@
 name: CI
 on: [push]
 
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 jobs:
   linux:
     runs-on: ubuntu-latest
@@ -13,12 +16,44 @@ jobs:
       - name: Build
         run: |
           yarn install --frozen-lockfile
+          yarn build --x64 --arm64
+      - uses: actions/upload-artifact@master
+        with:
+          name: SuperScreenPi Linux X64
+          path: ./dist/superscreenpi_*_amd64.deb
+      - uses: actions/upload-artifact@master
+        with:
+          name: SuperScreenPi Linux arm64
+          path: ./dist/superscreenpi_*_arm64.deb
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Build
+        run: |
+          yarn install --frozen-lockfile
           yarn build
       - uses: actions/upload-artifact@master
         with:
-          name: SuperScreenPi Linux AppImage
-          path: ./dist/SuperScreenPi-*.AppImage
+          name: SuperScreenPi Windows
+          path: ./dist/SuperScreenPi *.msi
+  mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Build
+        run: |
+          yarn install --frozen-lockfile
+          yarn build
       - uses: actions/upload-artifact@master
         with:
-          name: SuperScreenPi Linux Deb
-          path: ./dist/superscreenpi_*_amd64.deb
+          name: SuperScreenPi Mac
+          path: ./dist/SuperScreenPi-*.dmg

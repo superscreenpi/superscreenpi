@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder --publish never",
+    "build": "electron-builder --publish onTag",
     "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
@@ -26,8 +26,20 @@
       "output": "dist"
     },
     "linux": {
-      "target": ["AppImage", "deb"],
+      "target": [
+        "deb"
+      ],
       "category": "Core"
+    },
+    "win": {
+      "target": [
+        "msi"
+      ]
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ]
     }
   }
 }
