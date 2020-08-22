@@ -29,7 +29,7 @@
       "target": ["AppImage", "deb"],
       "category": "Core"
     },
-    "windows": {
+    "win": {
       "target": ["msi"]
     }
   }
