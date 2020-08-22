@@ -16,7 +16,9 @@ jobs:
           yarn build
       - uses: actions/upload-artifact@master
         with:
-          name: linux-x64
-          path: |
-            ./dist/SuperScreenPi-*.AppImage
-            ./dist/superscreenpi_*_amd64.deb
+          name: SuperScreenPi Linux AppImage
+          path: ./dist/SuperScreenPi-*.AppImage
+      - uses: actions/upload-artifact@master
+        with:
+          name: SuperScreenPi Linux Deb
+          path: ./dist/superscreenpi_*_amd64.deb
