@@ -9,7 +9,7 @@ function createWindow() {
     const win = new BrowserWindow({
         width: 1280,
         height: 400,
-        fullscreen: !!flags.fullscreen,
+        fullscreen: !!flags['--fullscreen'],
         title: 'SuperScreenPi'
     })
     win.setMenu(null);

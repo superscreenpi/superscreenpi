@@ -1,15 +1,29 @@
 {
   "name": "superscreenpi",
   "version": "1.0.0",
+  "author": "Thomas Biesaart <thomas.biesaart@protonmail.com>",
   "main": "index.js",
   "repository": "git@github.com:superscreenpi/superscreenpi.git",
-  "author": "Thomas Biesaart <thomas.biesaart@protonmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "dependencies": {
+    "luxon": "^1.24.1"
   },
   "devDependencies": {
     "electron": "^9.2.1",
-    "luxon": "^1.24.1"
+    "electron-builder": "^22.8.0"
+  },
+  "build": {
+    "appId": "io.github.superscreenpi",
+    "productName": "SuperScreenPi",
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    }
   }
 }
