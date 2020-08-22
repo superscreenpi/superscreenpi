@@ -34,4 +34,20 @@ jobs:
         run: |
           yarn install --frozen-lockfile
           yarn build
-      - run: dir dist
+      - uses: actions/upload-artifact@master
+        with:
+          name: SuperScreenPi Windows
+          path: ./dist/SuperScreenPi *.msi
+  mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Build
+        run: |
+          yarn install --frozen-lockfile
+          yarn build
+      - run: ls dist

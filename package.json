@@ -26,11 +26,21 @@
       "output": "dist"
     },
     "linux": {
-      "target": ["AppImage", "deb"],
+      "target": [
+        "AppImage",
+        "deb"
+      ],
       "category": "Core"
     },
     "win": {
-      "target": ["msi"]
+      "target": [
+        "msi"
+      ]
+    },
+    "mac": {
+      "target": [
+        "dmg"
+      ]
     }
   }
 }
