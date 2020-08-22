@@ -16,7 +16,7 @@ jobs:
       - name: Build
         run: |
           yarn install --frozen-lockfile
-          yarn build
+          yarn build --x64 --arm64
       - uses: actions/upload-artifact@master
         with:
           name: SuperScreenPi Linux X64
