@@ -16,12 +16,12 @@ jobs:
           yarn build
       - uses: actions/upload-artifact@master
         with:
-          name: SuperScreenPi Linux AppImage
-          path: ./dist/SuperScreenPi-*.AppImage
+          name: SuperScreenPi Linux X64
+          path: ./dist/superscreenpi_*_amd64.deb
       - uses: actions/upload-artifact@master
         with:
-          name: SuperScreenPi Linux Deb
-          path: ./dist/superscreenpi_*_amd64.deb
+          name: SuperScreenPi Linux arm64
+          path: ./dist/superscreenpi_*_arm64.deb
   windows:
     runs-on: windows-latest
     steps:
@@ -50,4 +50,7 @@ jobs:
         run: |
           yarn install --frozen-lockfile
           yarn build
-      - run: ls dist
+      - uses: actions/upload-artifact@master
+        with:
+          name: SuperScreenPi Mac
+          path: ./dist/SuperScreenPi-*.dmg
