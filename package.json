@@ -1,0 +1,15 @@
+{
+  "name": "superscreenpi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:superscreenpi/superscreenpi.git",
+  "author": "Thomas Biesaart <thomas.biesaart@protonmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^9.2.1",
+    "luxon": "^1.24.1"
+  }
+}
