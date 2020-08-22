@@ -28,6 +28,9 @@
     "linux": {
       "target": ["AppImage", "deb"],
       "category": "Core"
+    },
+    "windows": {
+      "target": ["msi"]
     }
   }
 }

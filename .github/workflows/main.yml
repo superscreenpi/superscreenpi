@@ -22,3 +22,16 @@ jobs:
         with:
           name: SuperScreenPi Linux Deb
           path: ./dist/superscreenpi_*_amd64.deb
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Build
+        run: |
+          yarn install --frozen-lockfile
+          yarn build
+      - run: dir dist
