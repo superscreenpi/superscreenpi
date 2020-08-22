@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder --publish onTag",
+    "build": "electron-builder",
     "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
