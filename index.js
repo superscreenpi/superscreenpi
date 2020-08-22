@@ -1,4 +1,5 @@
 const {app, BrowserWindow, BrowserView, ipcMain} = require('electron')
+const path = require('path');
 
 const baseUrl = process.env.BASE_URL || 'https://superscreenpi.github.io/launcher';
 const flags = {};
@@ -10,8 +11,10 @@ function createWindow() {
         width: 1280,
         height: 400,
         fullscreen: !!flags['--fullscreen'],
-        title: 'SuperScreenPi'
-    })
+        title: 'SuperScreenPi',
+        show: false,
+        icon: path.join(__dirname, '/icon.png')
+    });
     win.setMenu(null);
 
     const navbar = new BrowserView({
@@ -51,11 +54,10 @@ function createWindow() {
     }
 
     win.addListener('resize', resize);
-    win.addListener('will-resize', () => {
-        resize();
-    });
+    win.addListener('show', resize);
     navbar.webContents.loadURL(`${baseUrl}/#/navbar`);
     view.webContents.loadURL(`${baseUrl}/#/`);
+    win.show();
 }
 
 app.whenReady().then(createWindow)
