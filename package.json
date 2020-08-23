@@ -1,6 +1,6 @@
 {
   "name": "superscreenpi",
-  "version": "1.1.0",
+  "version": "1.0.1",
   "description": "Loads of power at your finger tips.",
   "author": "Thomas Biesaart <thomas.biesaart@protonmail.com>",
   "main": "index.js",
