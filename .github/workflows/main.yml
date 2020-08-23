@@ -19,6 +19,11 @@ jobs:
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - uses: apple-actions/import-codesign-certs@v1
+        if: matrix.os == 'macos-latest'
+        with:
+          p12-file-base64: ${{ secrets.P12_CERT_BASE64 }}
+          p12-password: ${{ secrets.P12_CERT_PASSWORD }}
       - name: Build
         run: |
           yarn install --frozen-lockfile
